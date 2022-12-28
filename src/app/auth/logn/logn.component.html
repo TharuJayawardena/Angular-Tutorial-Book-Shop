@@ -1,0 +1,28 @@
+<div class="flex  h-screen justify-center">
+  <form (ngSubmit)="submit()"  class="p-4 rounded-lg border m-auto">
+    <h1 class="text-center text-xl">Login</h1>
+    <div class="my-5 w-full">
+      <label for="email">Email</label>
+      <input type="text" id="email" class="p-2 rounded w-full border" placeholder="Email Address" [(ngModel)]="form.email" name="email" #email="ngModel" required>
+    </div>
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="p-4 bg-red-300 text-red-500 rounded">
+      Email field must be valid
+    </div>
+    <div class="my-5 w-full">
+      <label for="password">Password</label>
+      <input type="text" id="password" class="p-2 rounded w-full border"  placeholder="Password" [(ngModel)]="form.password" name="password" #password="ngModel" required>
+    </div>
+    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="p-4 bg-red-300 text-red-500 rounded">
+      Email field must be valid
+    </div>
+    <div class="my-5">
+      <button type="submit" [disabled]="myForm.form.invalid" class="p-2 rounded w-full bg-purple-700 text-white hover:bg-purple-900">Submit</button>
+    <ng-container *ngIf="isLoading()">
+      Loading...
+    </ng-container>
+    <ng-container *ngIf="!isLoading()">
+      Submit
+    </ng-container>
+    </div>
+  </form>
+</div>
